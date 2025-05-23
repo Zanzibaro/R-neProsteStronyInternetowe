@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a href="index.html">Strona Główna</a>
+    <div id="kalkulator">
+        <input id="wyswietlacz" readonly>
+
+        <div id="przyciski">
+            <button onclick="dodajDoWyswietlacza('7')">7</button>
+            <button onclick="dodajDoWyswietlacza('8')">8</button>
+            <button onclick="dodajDoWyswietlacza('9')">9</button>
+            <button onclick="dodajDoWyswietlacza('+')">+</button>
+            <button onclick="dodajDoWyswietlacza('4')">4</button>
+            <button onclick="dodajDoWyswietlacza('5')">5</button>
+            <button onclick="dodajDoWyswietlacza('6')">6</button>
+            <button onclick="dodajDoWyswietlacza('-')">-</button>
+            <button onclick="dodajDoWyswietlacza('1')">1</button>
+            <button onclick="dodajDoWyswietlacza('2')">2</button>
+            <button onclick="dodajDoWyswietlacza('3')">3</button>
+            <button onclick="dodajDoWyswietlacza('*')">*</button>
+            <button onclick="dodajDoWyswietlacza('0')">0</button>
+            <button onclick="dodajDoWyswietlacza('.')">.</button>
+            <button onclick="oblicz()">=</button>
+            <button onclick="dodajDoWyswietlacza('/')">/</button>
+            <button onclick="wyczysc()">C</button>
+        </div>
+    </div>
+
+    <script src="program.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tabele</title>
+    <style>
+        body {
+            display: grid;
+            justify-content: center;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+
+        input[type="submit"] {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html">Strona Główna</a>
+
+    <form id="myForm">
+        <label for="fimie">Podaj imię:</label><br>
+        <input type="text" id="fimie" name="fimie" required><br>
+
+        <label for="fnazw">Podaj nazwisko:</label><br>
+        <input type="text" id="fnazw" name="fnazw" required><br>
+
+        <label for="fulica">Podaj nazwę ulicy:</label><br>
+        <input type="text" id="fulica" name="fulica"><br>
+
+        <label for="fmieszk">Podaj numer mieszkania:</label><br>
+        <input type="number" id="fmieszk" name="fmieszk"><br>
+
+        <label for="ftelefon">Podaj numer telefonu:</label><br>
+        <input type="tel" id="ftelefon" name="ftelefon" required><br>
+
+        <label for="fdataur">Podaj datę urodzenia:</label><br>
+        <input type="date" id="fdataur" name="fdataur" required><br>
+
+        <p>Czy posiadasz prawo jazdy?:</p>
+        <input type="radio" id="fprawkoTak" name="fprawko" value="Tak">
+        <label for="fprawkoTak">Tak</label>
+        <input type="radio" id="fprawkoNie" name="fprawko" value="Nie">
+        <label for="fprawkoNie">Nie</label><br><br>
+
+        <label for="fhaslo">Podaj hasło (min. 8 znaków, 1 duża litera, 1 liczba):</label><br>
+        <input type="password" id="fhaslo" name="fhaslo" required><br>
+
+        <p>Jaka jest twoja płeć?:</p>
+        <input type="radio" id="fplecM" name="fplec" value="M">
+        <label for="fplecM">Mężczyzna</label>
+        <input type="radio" id="fplecF" name="fplec" value="F">
+        <label for="fplecF">Kobieta</label>
+        <input type="radio" id="fplecWNM" name="fplec" value="WNM">
+        <label for="fplecWNM">Wolę nie mówić</label><br><br>
+
+        <label for="fmiasto">Podaj nazwę swojego miasta:</label><br>
+        <input type="text" id="fmiasto" name="fmiasto"><br>
+
+        <label for="fpanstwo">Podaj nazwę swojego państwa:</label><br>
+        <input type="text" id="fpanstwo" name="fpanstwo"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (e) {
+            // Pobranie wartości pól
+            const imie = document.getElementById('fimie').value;
+            const nazwisko = document.getElementById('fnazw').value;
+            const telefon = document.getElementById('ftelefon').value;
+            const haslo = document.getElementById('fhaslo').value;
+
+            // Definicja regexów
+            const regexImie = /^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+$/; // Imię zaczynające się wielką literą
+            const regexNazwisko = /^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+(-[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+)?$/; // Nazwisko z opcjonalnym myślnikiem
+            const regexTelefon = /^\d{9}$/; // Dokładnie 9 cyfr
+            const regexHaslo = /^(?=.*[A-Z])(?=.*\d).{8,}$/; // Min. 8 znaków, 1 duża litera, 1 liczba
+
+            // Walidacja
+            if (!regexImie.test(imie)) {
+                alert('Imię musi zaczynać się wielką literą i zawierać tylko litery.');
+                e.preventDefault();
+            } else if (!regexNazwisko.test(nazwisko)) {
+                alert('Nazwisko musi zaczynać się wielką literą i może zawierać myślnik.');
+                e.preventDefault();
+            } else if (!regexTelefon.test(telefon)) {
+                alert('Numer telefonu musi składać się z dokładnie 9 cyfr.');
+                e.preventDefault();
+            } else if (!regexHaslo.test(haslo)) {
+                alert('Hasło musi mieć minimum 8 znaków, 1 dużą literę i 1 cyfrę.');
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>

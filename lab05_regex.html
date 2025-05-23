@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tabele</title>
+    <style>
+        body {
+            display: grid;
+            justify-content: center;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+
+        input[type="submit"] {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html">Strona Główna</a>
+
+    <form id="myForm">
+        <label for="fimie">Podaj imię:</label><br>
+        <input type="text" id="fimie" name="fimie" required><br>
+
+        <label for="fnazw">Podaj nazwisko:</label><br>
+        <input type="text" id="fnazw" name="fnazw" required><br>
+
+        <label for="fulica">Podaj nazwę ulicy:</label><br>
+        <input type="text" id="fulica" name="fulica" required><br>
+
+        <label for="fmieszk">Podaj numer mieszkania:</label><br>
+        <input type="text" id="fmieszk" name="fmieszk" required><br>
+
+        <label for="ftelefon">Podaj numer telefonu:</label><br>
+        <input type="tel" id="ftelefon" name="ftelefon" required><br>
+
+        <label for="fdataur">Podaj datę urodzenia:</label><br>
+        <input type="date" id="fdataur" name="fdataur" required><br>
+
+        <p>Czy posiadasz prawo jazdy?:</p>
+        <input type="radio" id="fprawkoTak" name="fprawko" value="Tak" required>
+        <label for="fprawkoTak">Tak</label>
+        <input type="radio" id="fprawkoNie" name="fprawko" value="Nie">
+        <label for="fprawkoNie">Nie</label><br><br>
+
+        <label for="fhaslo">Podaj hasło:</label><br>
+        <input type="password" id="fhaslo" name="fhaslo" required><br>
+
+        <p>Jaka jest twoja płeć?:</p>
+        <input type="radio" id="fplecM" name="fplec" value="M" required>
+        <label for="fplecM">Mężczyzna</label>
+        <input type="radio" id="fplecF" name="fplec" value="F">
+        <label for="fplecF">Kobieta</label>
+        <input type="radio" id="fplecWNM" name="fplec" value="WNM">
+        <label for="fplecWNM">Wolę nie mówić</label><br><br>
+
+        <label for="fmiasto">Podaj nazwę swojego miasta:</label><br>
+        <input type="text" id="fmiasto" name="fmiasto" required><br>
+
+        <label for="fpanstwo">Podaj nazwę swojego państwa:</label><br>
+        <input type="text" id="fpanstwo" name="fpanstwo" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            const imie = document.getElementById('fimie').value;
+            const nazwisko = document.getElementById('fnazw').value;
+            const ulica = document.getElementById('fulica').value;
+            const mieszkanie = document.getElementById('fmieszk').value;
+            const telefon = document.getElementById('ftelefon').value;
+            const haslo = document.getElementById('fhaslo').value;
+            const miasto = document.getElementById('fmiasto').value;
+            const panstwo = document.getElementById('fpanstwo').value;
+
+            const tylkoTekst = /^[A-Za-ząćęłńóśźż ]+$/;
+            const tekstZMyslnikiem = /^[A-Za-ząćęłńóśźż ]+-?[A-Za-zęóąśłżźćń ]*$/;
+            const numerMieszkania = /^\d+[A-Za-z]?$/
+            const numerTelefonu = /^\d{9}$/;
+            const tekstILiczby = /^[a-zA-Z0-9 ]+$/;
+
+            // Walidacja
+            if (!tylkoTekst.test(imie)) {
+                alert('Imie zawiera znaki inne niz litery!');
+                event.preventDefault()
+            } else if (!tekstZMyslnikiem.test(nazwisko)) {
+                alert('Nazwisko nie moze zawierac liczb ani znakow specjalnych oprocz "-" ');
+                event.preventDefault();
+            } else if (!tekstZMyslnikiem.test(ulica)) {
+                alert('Nazwa ulicy nie moze zawierac znakow specjalnych');
+                event.preventDefault();
+            } else if (!numerMieszkania.test(mieszkanie)) {
+                alert('Numer mieszkania moze zawierac liczbe oraz pojedyncza litere, bez spacji');
+                event.preventDefault();
+            } else if (!numerTelefonu.test(telefon)) {
+                alert('Numer telefonu musi zawierac 9 cyfr');
+                event.preventDefault();
+            } else if (!tekstILiczby.test(haslo)) {
+                alert('Haslo nie moze zawierac znakow specjalnych');
+                event.preventDefault();
+            } else if (!tekstZMyslnikiem.test(miasto)) {
+                alert('Nazwa miasta nie moze zawierac znakow specjalnych');
+                event.preventDefault();
+            } else if (!tylkoTekst.test(panstwo)) {
+                alert('Nazwa panstwa nie moze zawierac znakow specjalnych ani liczb');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+button {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    border: none;
+    background-color: #4e4d4d;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#przyciski {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+    gap: 10px;
+}
+
+#kalkulator {
+    background-color: rgb(37, 37, 37);
+    max-width: 500px;
+    overflow: hidden;
+    /* Jeśli w wyświetlaczu coś będzie na siebie nachodzić, to ten kod się ukryje */
+}
+
+#wyswietlacz {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    font-size: x-large;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    /* wyrównuje w poziomie */
+    align-items: center;
+    /* wyrównuje w pionie */
+    height: 100vh;
+    /* wykorzystuje 100% wysokości */
+}
+
+button:hover {
+    background-color: #5c5b5b;
+}
+
+a {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+}
